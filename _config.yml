@@ -1,2 +1,5 @@
 theme: jekyll-theme-minimal
-
+title: Dylan Lynch
+description: Software Engineer at Intel
+github:
+  is_project_page: false
