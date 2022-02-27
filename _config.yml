@@ -2,6 +2,5 @@ theme: jekyll-theme-minimal
 title: Dylan Lynch
 description: Senior Program Analyst at Cape Henry Associates, Inc.
 logo: https://static.www.nfl.com/t_q-best/league/api/clubs/logos/TB
-show_downloads: false
 github:
   is_project_page: false
