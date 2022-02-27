@@ -2,4 +2,4 @@
 ### Senior Program Analyst at Cape Henry Associates, Inc. 
 [Check us out!](https://cape-henry.com/)
 
-![Headshot](https://user-images.githubusercontent.com/98568281/155866673-3f45b43a-5592-4167-bb53-84815d2b04f0.jpg)
+![Headshot_ccexpress](https://user-images.githubusercontent.com/98568281/155867498-6eea0785-8a21-47a5-a660-91e6aec68b28.jpeg)
