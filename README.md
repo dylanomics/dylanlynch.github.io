@@ -8,6 +8,9 @@
 
 <br clear="left"/>
 
+$sidebar = Menu::create('sidebar');
+$sidebar->addItem('Home',  '/');
+$sidebar->addItem('About', 'about');
 
 
 
