@@ -4,6 +4,7 @@
 
 <img align="left" src="https://github.com/dylanomics/dylanomics.github.io/blob/main/headshot.jpg">
 
+
 ## About me
 
 <br clear="left"/>
