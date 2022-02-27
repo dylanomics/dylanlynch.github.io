@@ -4,7 +4,7 @@
 
 <img align="left" src="https://github.com/dylanomics/dylanomics.github.io/blob/main/headshot.jpg">
 
-some text aligned to the right of the image
+## About me
 
 <br clear="left"/>
 
