@@ -15,7 +15,7 @@
 3. [Another paragraph](#paragraph2)
 
 ## This is the introduction <a name="introduction"></a>
-[Tom Brady Passing Statistics] src = "https://github.com/dylanomics/dylanomics.github.io/raw/main/Brady_Career.html"
+
 
 ## Some paragraph <a name="paragraph1"></a>
 The first paragraph text
