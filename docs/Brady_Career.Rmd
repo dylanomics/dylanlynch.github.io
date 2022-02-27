@@ -1,0 +1,383 @@
+---
+title: "Tom Brady's Passing Statistics"
+author: "Dylan Lynch"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+## About Tom Brady
+
+Tom Brady is a former American football quarterback who played in the National Football League (NFL) for 22 seasons. He spent his first 20 seasons with the New England Patriots, winning six Super Bowls, five Super Bowl MVPs, and three NFL MVPs. In his final two seasons, he was a member of the Tampa Bay Buccaneers where he won another Super Bowl and Super Bowl MVP. 
+
+His career highlights include: 7× Super Bowl champion (XXXVI, XXXVIII, XXXIX, XLIX, LI, LIII, LV), 5× Super Bowl MVP (XXXVI, XXXVIII, XLIX, LI, LV), 3× NFL Most Valuable Player (2007, 2010, 2017), 2× NFL Offensive Player of the Year (2007, 2010), NFL Comeback Player of the Year (2009), 3× First-team All-Pro (2007, 2010, 2017), 3× Second-team All-Pro (2005, 2016, 2021), 15× Pro Bowl (2001, 2004, 2005, 2007, 2009–2018, 2021), 5× NFL passing touchdowns leader (2002, 2007, 2010, 2015, 2021), 4× NFL passing yards leader (2005, 2007, 2017, 2021), and 2× NFL passer rating leader (2007, 2010). 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(scales)
+library(dplyr)
+library(ggplot2)
+library(gifski)
+library(av)
+library(png)
+library(gganimate)
+
+Brady_Regular_Career <- read.csv("Brady_RegSeason.csv")
+Brady_Post_Career <- read.csv("Brady_PostSeason.csv")
+
+Brady_Regular_Career <- Brady_Regular_Career %>% 
+                        rename(Year = ï..Year)
+
+Brady_Post_Career <- Brady_Post_Career %>% 
+                    rename(Year = ï..Year)
+
+a <- Brady_Regular_Career %>%
+  select(Year, Age, Tm, G, GS, Cmp, Att, Yds, TD, Int)
+
+b <- Brady_Post_Career %>% 
+  select(Year, Age, Tm, G, GS, Cmp, Att, Yds, TD, Int)
+
+Brady_Combined <- rbind(a,b)
+
+Brady_Regular_Career_Adj <- Brady_Regular_Career %>% slice(-c(1, 9))
+
+c <- Brady_Regular_Career_Adj %>% 
+  select(Year, Age, Tm, G, GS, Cmp, Att, Yds, TD, Int)
+
+Brady_Combined_Adj <- rbind(c,b)
+```
+
+## Passing averages
+
+Let's see how many passing yards Tom Brady averaged in the regular and post season. 
+
+Regular season:
+```{r}
+mean(Brady_Regular_Career$Yds) #Average regular season yards
+```
+
+Post season:
+```{r}
+mean(Brady_Post_Career$Yds) #Average post season yards
+```
+
+Adjusted:
+```{r}
+mean(Brady_Regular_Career_Adj$Yds) #Average adjusted regular season yards (dropping two seasons)
+```
+
+Why are there three sets of numbers? `Brady_Regular_Career_Adj` drops the 2000 and 2008 seasons. Why? In 2000, Tom Brady was 1/3 for six yards due to being a backup, actually starting the season as the fourth string QB. In 2008, Tom Brady was 7/11 for 76 yards due to a season ending knee injury in the first quarter of the first game of the season. In 2016, Tom Brady was suspended for the first four games of the season due to the "Deflategate scandal". However, we will include this season because they ended up winning the Super Bowl that year. Also, no adjustments were made to his post season career. 
+
+Next, we will do the same thing for touchdowns (TDs).
+
+Regular season:
+```{r}
+mean(Brady_Regular_Career$TD) #Average regular season TD
+```
+
+Post season:
+```{r}
+mean(Brady_Post_Career$TD) #Average post season TD
+```
+
+Adjusted:
+```{r}
+mean(Brady_Regular_Career_Adj$TD) #Average adjusted regular season TD (dropping two seasons)
+```
+
+## Unbreakable combined records?
+
+Combined passing yards: (`Brady_Combined` includes all seasons including the post season)
+```{r}
+sum(Brady_Combined$Yds) #Total career passing yards
+```
+
+Combined TDs:
+```{r}
+sum(Brady_Combined$TD) #Total career passing TDs
+```
+
+
+## Passing TDs by age
+
+Did Tom Brady get better as he got older? Let's take a look.
+
+## 20s
+
+Regular season:
+```{r}
+#Total regular season TDs 20s by age
+aggregate(TD ~ Age, data=subset(Brady_Regular_Career, Age >=23 & Age<=29),sum) 
+```
+
+Post season:
+```{r}
+#Total post season TDs 20s by age
+aggregate(TD ~ Age, data=subset(Brady_Post_Career, Age >=23 & Age<=29),sum) 
+```
+
+Combined:
+```{r}
+#Total TDs 20s by age
+aggregate(TD ~ Age, data=subset(Brady_Combined, Age >=23 & Age<=29),sum)
+```
+
+Total TDs in 20s:
+```{r}
+TD_20s <- aggregate(TD ~ Age, data=subset(Brady_Combined, Age >=23 & Age<=29),sum)
+sum(TD_20s$TD)
+```
+
+## 30s
+
+Regular season:
+```{r}
+#Total regular season TD 30s
+aggregate(TD ~ Age, data=subset(Brady_Regular_Career, Age >=30 & Age<=39),sum) 
+```
+
+Post season:
+```{r}
+#Total post season TD 30s
+aggregate(TD ~ Age, data=subset(Brady_Post_Career, Age >=30 & Age<=39),sum) 
+```
+
+Combined:
+```{r}
+#Total TDs 30s
+aggregate(TD ~ Age, data=subset(Brady_Combined, Age >=30 & Age<=39),sum) 
+```
+
+Total TDs 30s:
+```{r}
+TD_30s <- aggregate(TD ~ Age, data=subset(Brady_Combined, Age >=30 & Age<=39),sum) 
+sum(TD_30s$TD)
+```
+
+## 40s
+
+Regular season:
+```{r}
+#Total regular season TD 40s
+aggregate(TD ~ Age, data=subset(Brady_Regular_Career, Age >=40),sum) 
+```
+
+Post season:
+```{r}
+#Total post season TD 40s
+aggregate(TD ~ Age, data=subset(Brady_Post_Career, Age >=40),sum)
+```
+
+Combined:
+```{r}
+#Total TDs 40s
+aggregate(TD ~ Age, data=subset(Brady_Combined, Age >=40),sum) 
+```
+
+Total TDs 40s:
+```{r}
+TD_40s <- aggregate(TD ~ Age, data=subset(Brady_Combined, Age >=40),sum) 
+sum(TD_40s$TD)
+```
+&nbsp;
+
+Well, he didn't exactly play his entire 40s, but he did throw more TDs in his 40s than his 20s. 
+
+&nbsp;
+
+Numbers are great, but visualization tells the story.
+```{r}
+#Passing touchdowns
+Reg_TD <- subset(Brady_Regular_Career, select = c(Age, TD))
+Post_TD <- subset(Brady_Post_Career, select = c(Age, TD))
+Combined_TD <- aggregate(TD ~ Age, data=subset(Brady_Combined, select = c(Age, TD)),sum)
+
+#TD plot
+TD_plot <- ggplot()+
+  geom_line(Reg_TD, mapping = aes(Age, TD, color = "red"), lwd = 1)+
+  geom_line(Post_TD, mapping = aes(Age, TD, color = "blue"), lwd = 1)+
+  geom_line(Combined_TD, mapping = aes(Age, TD, color = "green"), lwd = 1)+
+  theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  scale_color_identity(name = "",
+                       breaks = c("red", "blue", "green"),
+                       labels = c("Regular Season", "Post Season", "Combined"),
+                       guide = "legend")+
+  theme(legend.position="bottom")+
+  ggtitle("Tom Brady Passing TDs per Age")
+
+TD_plot
+```
+
+How does this look? This is the plot without adjusting for the the 2000 and 2008 seasons.
+
+Let's try again with the adjusted data set.
+```{r}
+#Adjusted TDs
+Reg_TD_Adj <- subset(Brady_Regular_Career_Adj, select = c(Age, TD))
+Combined_TD_Adj <- aggregate(TD ~ Age, data=subset(Brady_Combined_Adj, select = c(Age, TD)),sum)
+
+#Adjusted TD plot
+Adj_TD_plot <- ggplot()+
+  geom_line(Reg_TD_Adj, mapping = aes(Age, TD, color = "red"), lwd = 1)+
+  geom_line(Post_TD, mapping = aes(Age, TD, color = "blue"), lwd = 1)+
+  geom_line(Combined_TD_Adj, mapping = aes(Age, TD, color = "green"), lwd = 1)+
+  theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  scale_color_identity(name = "",
+                       breaks = c("red", "blue", "green"),
+                       labels = c("Regular Season", "Post Season", "Combined"),
+                       guide = "legend")+
+  theme(legend.position="bottom")+
+  ggtitle("Tom Brady Passing TDs per Age")
+
+Adj_TD_plot
+```
+
+See the difference? 
+
+Check out the GIF!
+```{r}
+knitr::include_graphics("AdjTDplot.gif")
+```
+
+## Passing yards by age
+
+Now, we can do the same for passing yards. Let's take a look.
+
+## 20s
+
+Regular season:
+```{r}
+#Total regular season yards 20s
+aggregate(Yds ~ Age, data=subset(Brady_Regular_Career, Age >=23 & Age<=29),sum)
+```
+
+Post season:
+```{r}
+#Total post season yards 20s
+aggregate(Yds ~ Age, data=subset(Brady_Post_Career, Age >=23 & Age<=29),sum) 
+```
+
+Combined:
+```{r}
+#Total yards 20s
+aggregate(Yds ~ Age, data=subset(Brady_Combined, Age >=23 & Age<=29),sum)
+```
+
+Total yards in 20s:
+```{r}
+Yds_20s <- aggregate(Yds ~ Age, data=subset(Brady_Combined, Age >=23 & Age<=29),sum) 
+sum(Yds_20s$Yds)
+```
+
+## 30s
+
+Regular season:
+```{r}
+#Total regular season yards 30s
+aggregate(Yds ~ Age, data=subset(Brady_Regular_Career, Age >=30 & Age<=39),sum) 
+```
+
+Post season:
+```{r}
+#Total post season yards 30s
+aggregate(Yds ~ Age, data=subset(Brady_Post_Career, Age >=30 & Age<=39),sum) 
+```
+
+Combined:
+```{r}
+#Total yards 30s
+aggregate(Yds ~ Age, data=subset(Brady_Combined, Age >=30 & Age<=39),sum) 
+```
+
+Total yards in 30s:
+```{r}
+Yds_30s <- aggregate(Yds ~ Age, data=subset(Brady_Combined, Age >=30 & Age<=39),sum) 
+sum(Yds_30s$Yds)
+```
+
+## 40s
+
+Regular season:
+```{r}
+#Total regular season yards 40s
+aggregate(Yds ~ Age, data=subset(Brady_Regular_Career, Age >=40),sum) 
+```
+
+Post season:
+```{r}
+#Total post season yards 40s
+aggregate(Yds ~ Age, data=subset(Brady_Post_Career, Age >=40),sum) 
+```
+
+Combined:
+```{r}
+#Total total yards 40s
+aggregate(Yds ~ Age, data=subset(Brady_Combined, Age >=40),sum)
+```
+
+Total yards in 40s:
+```{r}
+Yds_40s <- aggregate(Yds ~ Age, data=subset(Brady_Combined, Age >=40),sum)
+sum(Yds_40s$Yds)
+```
+
+&nbsp;
+
+Once again, he didn't exactly play his entire 40s, but he did throw more yards in his 40s than his 20s.
+
+&nbsp;
+
+Let's recreate the visualization with passing yards this time.
+```{r}
+#Passing yards
+Reg_Yards <- subset(Brady_Regular_Career, select = c(Age, Yds))
+Post_Yards <- subset(Brady_Post_Career, select = c(Age, Yds))
+Combined <- aggregate(Yds ~ Age, data=subset(Brady_Combined, select = c(Age, Yds)),sum)
+
+#Yards plot
+Yds_plot <- ggplot()+
+  geom_line(Reg_Yards, mapping = aes(Age, Yds, color = "red"), lwd = 1)+
+  geom_line(Post_Yards, mapping = aes(Age, Yds, color = "blue"), lwd = 1)+
+  geom_line(Combined, mapping = aes(Age, Yds, color = "green"), lwd = 1)+
+  theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  scale_color_identity(name = "",
+                       breaks = c("red", "blue", "green"),
+                       labels = c("Regular Season", "Post Season", "Combined"),
+                       guide = "legend")+
+  theme(legend.position="bottom")+
+  ggtitle("Tom Brady Passing Yards per Age")
+ 
+
+Yds_plot
+```
+
+Again, we need to adjust for the the 2000 and 2008 seasons.
+```{r}
+#Adjusted yards
+Reg_Yards_Adj <- subset(Brady_Regular_Career_Adj, select = c(Age, Yds))
+Combined_Yards_Adj <- aggregate(Yds ~ Age, data=subset(Brady_Combined_Adj, select = c(Age, Yds)),sum)
+
+#Adjusted yards plot
+Adj_Yds_plot <- ggplot()+
+  geom_line(Reg_Yards_Adj, mapping = aes(Age, Yds, color = "red"), lwd = 1)+
+  geom_line(Post_Yards, mapping = aes(Age, Yds, color = "blue"), lwd = 1)+
+  geom_line(Combined_Yards_Adj, mapping = aes(Age, Yds, color = "green"), lwd = 1)+
+  theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  scale_color_identity(name = "",
+                       breaks = c("red", "blue", "green"),
+                       labels = c("Regular Season", "Post Season", "Combined"),
+                       guide = "legend")+
+  theme(legend.position="bottom")+
+  ggtitle("Tom Brady Passing Yards per Age")
+
+Adj_Yds_plot
+```
+
+Check out the GIF!
+```{r}
+knitr::include_graphics("AdjYdsplot.gif")
+```
+
