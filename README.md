@@ -15,7 +15,7 @@
 3. [Another paragraph](#paragraph2)
 
 ## This is the introduction <a name="introduction"></a>
-Some introduction text, formatted in heading 2 style
+[Tom Brady Passing Statistics](https://github.com/dylanomics/dylanomics.github.io/raw/main/Brady_Career.html)
 
 ## Some paragraph <a name="paragraph1"></a>
 The first paragraph text
