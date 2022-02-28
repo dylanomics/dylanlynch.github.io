@@ -10,9 +10,11 @@
 ## Education
 ###### M.S. Economics, West Virginia University (2022) | B.A.S. Management, Florida State College at Jacksonville (2019)
 
-
-
 <br clear="left"/>
+
+```{r}
+2+1
+```
 
 # Table of contents
 1. [Introduction](#introduction)
