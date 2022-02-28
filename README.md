@@ -6,6 +6,8 @@
 
 ## About me
 
+Driven professional with over 10 years of increasing responsibility in business management, analysis, and program administration. Highly skilled in project management, organizational management, and leading cross functional teams.
+
 <br clear="left"/>
 
 # Table of contents
@@ -16,7 +18,6 @@
 
 ## This is the introduction <a name="introduction"></a>
 
-[ello]#https://github.com/dylanomics/dylanomics.github.io/blob/main/docs/Brady_Career.html
 
 ## Some paragraph <a name="paragraph1"></a>
 The first paragraph text
