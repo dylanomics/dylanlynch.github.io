@@ -19,6 +19,7 @@
 3. [Another paragraph](#paragraph2)
 
 ## This is the introduction <a name="introduction"></a>
+[Brady](https://github.com/dylanomics/dylanomics.github.io/blob/main/docs/Brady_Career.Rmd)
 
 ## Some paragraph <a name="paragraph1"></a>
 The first paragraph text
