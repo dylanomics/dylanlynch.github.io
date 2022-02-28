@@ -12,10 +12,6 @@
 
 <br clear="left"/>
 
-```{r}
-2+1
-```
-
 # Table of contents
 1. [Introduction](#introduction)
 2. [Some paragraph](#paragraph1)
@@ -23,7 +19,6 @@
 3. [Another paragraph](#paragraph2)
 
 ## This is the introduction <a name="introduction"></a>
-
 
 ## Some paragraph <a name="paragraph1"></a>
 The first paragraph text
