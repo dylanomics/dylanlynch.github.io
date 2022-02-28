@@ -9,9 +9,8 @@ Driven professional with over 10 years of increasing responsibility in business 
 
 ## Education
 B.A.S. Management - Florida State College at Jacksonville (2019)
-
 M.S. Economics - West Virginia University (2022)
-<br clear="left"/>
+
 <br clear="left"/>
 
 # Table of contents
