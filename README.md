@@ -5,7 +5,7 @@
 <img align="left" src="https://github.com/dylanomics/dylanomics.github.io/raw/main/headshot.png">
 
 ## About me
-########## Driven professional with over 10 years of increasing responsibility in business management, analysis, and program administration. Highly skilled in project management, organizational management, and leading cross functional teams.
+###### Driven professional with over 10 years of increasing responsibility in business management, analysis, and program administration. Highly skilled in project management, organizational management, and leading cross functional teams.
 
 ## Education
 B.A.S. Management - Florida State College at Jacksonville (2019)
