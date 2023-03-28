@@ -47,6 +47,10 @@ body {
   text-align: center;
 }
 
+.center-text {
+  text-align: center;
+}
+
 .my-image {
   max-width: 50px;
   height: auto;
