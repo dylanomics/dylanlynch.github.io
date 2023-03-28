@@ -47,6 +47,11 @@ body {
   text-align: center;
 }
 
+.my-image {
+  max-width: 100%;
+  height: auto;
+}
+
 .image-container {
   display: flex;
   justify-content: center;
