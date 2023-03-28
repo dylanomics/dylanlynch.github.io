@@ -17,7 +17,8 @@
 }
 
 .navbar li {
-  float: right;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .navbar li a {
