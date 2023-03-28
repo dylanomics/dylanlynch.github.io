@@ -48,8 +48,8 @@ body {
 }
 
 .my-image {
-  max-width: 150px;
-  height: auto;
+  max-width: 100px;
+  height: 100;
 }
 
 .image-container {
