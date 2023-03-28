@@ -43,6 +43,15 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.about-me {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.image-container {
+  margin-top: -50px;
+}
+
 .text-center {
   text-align: center;
 }
