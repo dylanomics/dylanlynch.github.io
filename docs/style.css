@@ -1,9 +1,5 @@
 .navbar {
   background-color: black;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   overflow: hidden;
 }
 
@@ -13,13 +9,15 @@
   padding: 0;
 }
 
-.navbar li {
+.navbar li:first-child {
   float: left;
-  border-right: 1px solid white;
+  font-weight: bold;
+  color: white;
+  padding: 14px 16px;
 }
 
-.navbar li:last-child {
-  border-right: none;
+.navbar li {
+  float: right;
 }
 
 .navbar li a {
@@ -28,13 +26,16 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-weight: bold;
 }
 
 .navbar li a:hover {
   background-color: #ddd;
   color: black;
-  text-decoration: underline;
+}
+
+.navbar li a.active {
+  background-color: #4CAF50;
+  color: white;
 }
 
 h1 {
