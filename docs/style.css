@@ -37,6 +37,12 @@
   text-decoration: underline;
 }
 
+h1 {
+  font-size: 3em;
+  margin-top: 60px;
+  padding-top: 10px;
+}
+
 .text-center {
   text-align: center;
 }
