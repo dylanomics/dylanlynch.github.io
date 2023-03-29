@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="40">
+  <a href="https://www.credly.com/users/dylanlynch">
+    <rect x="0" y="0" width="140" height="40" fill="#24292e"/>
+    <text x="10" y="25" font-size="14" fill="#ffffff">My Badges</text>
+    <image x="80" y="10" width="20" height="20" xlink:href="https://cdn.credly.com/assets/utilities/asset_library/credly_logo_blue_small-65cdd1d26ed0f5662e5b5a51b5ea7916.png"/>
+  </a>
+</svg>
