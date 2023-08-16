@@ -67,6 +67,7 @@ body {
 .my-image {
   max-width: 100px;
   height: auto;
+  display: block;
 }
 
 .image-container {
