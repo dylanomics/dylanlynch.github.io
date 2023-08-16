@@ -39,6 +39,12 @@
   color: white;
 }
 
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
