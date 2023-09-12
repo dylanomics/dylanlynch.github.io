@@ -75,7 +75,8 @@ body {
   justify-content: center;
   align-items: center;
   height: auto;
-  margin-top: 0;
+  margin-top: 20px; /* Increased top margin */
+  margin-bottom: 20px; /* Increased bottom margin */
 }
 
 .image-container img {
